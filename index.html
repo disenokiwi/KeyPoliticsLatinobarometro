@@ -180,7 +180,7 @@
   /* ===== map ===== */
   .map-wrap { display: grid; grid-template-columns: 1fr; gap: 22px; align-items: center; }
   @media (min-width: 820px) { .map-wrap { grid-template-columns: .9fr 1.1fr; gap: 36px; } }
-  .map-wrap img { width: 100%; height: auto; border-radius: 8px; }
+  .map-wrap .mapbox > img { width: 100%; height: auto; border-radius: 8px; }
   .vote { padding: 4px 0; }
   .vote .row { display: grid; grid-template-columns: 1fr auto; gap: 6px 14px; padding: 18px 0; border-top: 1px solid var(--line); cursor: default; }
   .vote .row:first-child { border-top: none; }
@@ -194,6 +194,13 @@
   .chips span.hl { background: var(--c); color: var(--chip-ink, #fff); border-color: var(--c); }
   .vote .row:first-child { --chip-ink: var(--night); }
   .chips span small { font-weight: 500; opacity: .85; margin-left: 4px; }
+
+
+  .flag { display: inline-block; width: auto; height: 14px; border-radius: 2px; vertical-align: -2px; margin-right: 7px; box-shadow: 0 0 0 1px rgba(24,25,31,.18); }
+  .chips span:hover .flag, .chips span.hl .flag { box-shadow: 0 0 0 1px rgba(24,25,31,.3); }
+  .mflag { position: absolute; transform: translateY(-100%); line-height: 0; z-index: 2; }
+  .mflag.r { transform: translate(-100%, -100%); }
+  .mflag .flag { width: auto; height: clamp(12px, 1.6vw, 17px); margin: 0; box-shadow: 0 0 0 1px rgba(24,25,31,.25), 0 2px 6px rgba(24,25,31,.25); }
 
   /* ===== dumbbell ===== */
   .sec-grid { display: grid; grid-template-columns: 1fr; gap: 16px; align-items: stretch; }
@@ -313,8 +320,8 @@
   .in.tiers .tile:hover { transform: translateY(-3px); transition-delay: 0ms; }
   .chips span:nth-child(n) { --st: calc(var(--n, 0) * 60ms); }
   .map-wrap .mapbox { position: relative; }
-  .map-wrap img { clip-path: inset(0 100% 0 0); transition: clip-path 1.4s cubic-bezier(.6,.1,.2,1) .1s; }
-  .in .map-wrap img { clip-path: inset(0 0 0 0); }
+  .map-wrap .mapbox > img { clip-path: inset(0 100% 0 0); transition: clip-path 1.4s cubic-bezier(.6,.1,.2,1) .1s; }
+  .in .map-wrap .mapbox > img { clip-path: inset(0 0 0 0); }
   .pulse { position: absolute; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%; opacity: 0; pointer-events: none; }
   .pulse::before, .pulse::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 2px solid #ffbf5e; background: rgba(255,191,94,.35); }
   .in .pulse { opacity: 1; transition: opacity .3s 1.5s; }
@@ -324,7 +331,7 @@
   .in.concl-item .ci-num { transform: none; opacity: 1; }
   .dark-card .dc-icon { animation: floaty 4s ease-in-out infinite; }
   @keyframes floaty { 50% { transform: translateY(-5px); } }
-  @media (prefers-reduced-motion: reduce) { .tile, .chips span, .concl-item .ci-icon, .concl-item .ci-num { opacity: 1; transform: none; transition: none; } .map-wrap img { clip-path: none; transition: none; } .pulse::before, .pulse::after, .dark-card .dc-icon { animation: none; } .anim .pt { animation: none; opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { .tile, .chips span, .concl-item .ci-icon, .concl-item .ci-num { opacity: 1; transform: none; transition: none; } .map-wrap .mapbox > img { clip-path: none; transition: none; } .pulse::before, .pulse::after, .dark-card .dc-icon { animation: none; } .anim .pt { animation: none; opacity: 1; } }
 
   /* ===== conclusions ===== */
   .concl-stack { margin-top: 18px; max-width: var(--wide); }
@@ -361,6 +368,7 @@
 </head>
 <body>
 <div class="progress" id="progress"></div>
+
 
 <div class="shell">
   <aside class="side" id="side" style="--stat-c:#1375f6">
@@ -475,11 +483,11 @@
         <h3 class="cf-title">Solo tres presidentes lograron la reelección</h3>
         <p class="cf-sub">Resultado de la última elección presidencial en cada país</p>
         <div class="map-wrap">
-          <div class="mapbox"><img src="assets/mapa-reeleccion.png" alt="Mapa de América Latina: en verde los países donde el presidente fue reelecto (El Salvador, República Dominicana y Ecuador); en negro, los que cambiaron de presidente" loading="lazy"><span class="pulse" style="left:49%;top:36.7%" aria-hidden="true"></span></div>
+          <div class="mapbox"><img src="assets/mapa-reeleccion.png" alt="Mapa de América Latina: en verde los países donde el presidente fue reelecto (El Salvador, República Dominicana y Ecuador); en negro, los que cambiaron de presidente" loading="lazy"><span class="mflag" style="left:77.3%;top:12.39%"><img class="flag" src="assets/banderas/republica-dominicana.png" alt=""></span><span class="mflag r" style="left:20.1%;top:20.44%"><img class="flag" src="assets/banderas/el-salvador.png" alt=""></span><span class="mflag r" style="left:24.3%;top:46.37%"><img class="flag" src="assets/banderas/ecuador.png" alt=""></span><span class="pulse" style="left:49%;top:36.7%" aria-hidden="true"></span></div>
           <div class="vote">
             <div class="row" style="--c:#ffbf5e">
               <h4><i></i>Reelección</h4><div class="num">3</div>
-              <div class="chips"><span style="--n:1">El Salvador<small>Nayib Bukele</small></span><span style="--n:2">República Dominicana<small>Luis Abinader</small></span><span style="--n:3" class="hl">Ecuador<small>Daniel Noboa</small></span></div>
+              <div class="chips"><span style="--n:1"><img class="flag" src="assets/banderas/el-salvador.png" alt="">El Salvador<small>Nayib Bukele</small></span><span style="--n:2"><img class="flag" src="assets/banderas/republica-dominicana.png" alt="">República Dominicana<small>Luis Abinader</small></span><span style="--n:3" class="hl"><img class="flag" src="assets/banderas/ecuador.png" alt="">Ecuador<small>Daniel Noboa</small></span></div>
             </div>
             <div class="row" style="--c:#201061">
               <h4><i></i>Cambio de presidente</h4><div class="num">13</div>
