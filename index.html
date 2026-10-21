@@ -76,7 +76,7 @@
   @media (max-width: 640px) { .opening { padding-top: 26px; } .opening-logos { position: static; margin-bottom: 28px; } }
   .opening .kick { font-size: 12.5px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: var(--magenta); margin-bottom: 18px; }
   .opening h1 { font-size: clamp(34px, 5.6vw, 68px); line-height: 1.02; letter-spacing: -.02em; font-weight: 800; margin: 0 0 26px; }
-  .opening .lede { font-size: clamp(17px, 1.6vw, 21px); line-height: 1.55; color: var(--ink-soft); max-width: 82ch; margin: 0 0 18px; }
+  .opening .lede { font-size: 18px; line-height: 1.7; color: var(--ink-soft); max-width: 82ch; margin: 0 0 18px; }
   .opening .lede strong { color: var(--ink); }
   .ticker { display: flex; flex-direction: column; border-top: 1px solid var(--line); margin-top: 34px; }
   .ticker .t-item { padding: 20px 0; border-bottom: 1px solid var(--line); }
@@ -93,19 +93,20 @@
   .chapter .num-bg { position: absolute; top: -.16em; right: 3vw; font-size: clamp(120px, 16vw, 240px); font-weight: 800; color: var(--stat-c); opacity: .08; line-height: 1; letter-spacing: -.04em; pointer-events: none; z-index: 0; user-select: none; }
   .chapter > * { position: relative; z-index: 1; }
   .chapter .kick { font-size: clamp(24px, 2.8vw, 34px); font-weight: 800; letter-spacing: -.01em; color: var(--stat-c); margin-bottom: 20px; line-height: 1.15; }
-  .chapter .lead-text { font-size: clamp(18px, 2vw, 23px); line-height: 1.5; max-width: var(--wide); color: var(--ink); font-weight: 500; margin: 0 0 18px; }
-  .chapter .body-text { font-size: 16.5px; line-height: 1.7; max-width: var(--wide); color: var(--ink-soft); margin: 0 0 18px; }
+  .chapter .lead-text { font-size: 18px; line-height: 1.7; max-width: var(--wide); color: var(--ink-soft); font-weight: 400; margin: 0 0 18px; }
+  .chapter .lead-text strong:not(.stat) { color: var(--ink); }
+  .chapter .body-text { font-size: 18px; line-height: 1.7; max-width: var(--wide); color: var(--ink-soft); margin: 0 0 18px; }
   .chapter .body-text strong { color: var(--ink); }
   .stat { color: var(--stat-c); font-weight: 800; }
   .quote { color: var(--ink); font-style: italic; }
 
 
   /* ===== chapter intro: text + topic photo ===== */
-  .intro-grid { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: start; max-width: 1280px; }
+  .intro-grid { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: stretch; max-width: 1280px; }
   @media (min-width: 1100px) { .intro-grid { grid-template-columns: minmax(0, 1fr) clamp(260px, 22vw, 340px); gap: 48px; } }
   .intro-grid .lead-text, .intro-grid .body-text { max-width: none; }
   .topic-photo { position: relative; margin: 0; aspect-ratio: 4 / 3; border-radius: 20px; overflow: hidden; background-color: color-mix(in srgb, var(--stat-c) 16%, #fff 84%); background-size: cover; background-position: center; box-shadow: 0 24px 44px -24px rgba(24,25,31,.35); }
-  @media (min-width: 1100px) { .topic-photo { aspect-ratio: 4 / 5; position: sticky; top: 32px; } }
+  @media (min-width: 1100px) { .topic-photo { aspect-ratio: auto; min-height: 220px; } }
   .topic-photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(200deg, transparent 45%, color-mix(in srgb, var(--stat-c) 60%, #000 40%) 145%); opacity: .5; mix-blend-mode: multiply; }
   .topic-photo::before { content: ""; position: absolute; z-index: 1; right: 18px; bottom: 18px; width: 30px; height: 30px; background: #fff; opacity: .85; -webkit-mask: url('assets/asterisco.svg') center / contain no-repeat; mask: url('assets/asterisco.svg') center / contain no-repeat; }
 
@@ -264,12 +265,12 @@
   .tile.hl .tbar { background: color-mix(in srgb, var(--orange) 40%, #fff 60%); }
   .tile.hl .tbar i { background: color-mix(in srgb, var(--orange) 80%, #000 20%); }
   .duel { max-width: var(--wide); margin-top: 30px; display: grid; grid-template-columns: 1fr; gap: 14px; }
-  @media (min-width: 820px) { .duel { grid-template-columns: 1.35fr 1fr; } }
+  @media (min-width: 820px) { .duel { grid-template-columns: 1fr 1.5fr; } }
   .duel .person { border-radius: 20px; background: var(--night); color: #fff; padding: 28px; position: relative; overflow: hidden; }
   .duel .person { display: grid; grid-template-columns: 1fr; padding: 0; }
   .duel .person .pt { padding: 28px; position: relative; z-index: 1; align-self: center; }
-  .person-photo { background-color: color-mix(in srgb, var(--lavender) 22%, var(--night) 78%); background-size: cover; background-position: 45% 15%; min-height: 220px; }
-  @media (min-width: 560px) { .duel .person { grid-template-columns: 1fr minmax(200px, 54%); } .person-photo { order: 2; min-height: 100%; } }
+  .person-photo { background-color: color-mix(in srgb, var(--lavender) 22%, var(--night) 78%); background-size: cover; background-position: 45% 15%; min-height: 300px; }
+  @media (min-width: 560px) { .person-photo { min-height: 100%; } }
   .duel .person::after { display: none; }
   .duel .person .k { font-size: 12.5px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.6); }
   .duel .person .n { font-size: clamp(54px, 6vw, 80px); font-weight: 800; letter-spacing: -.03em; color: var(--lavender); line-height: 1.05; margin: 10px 0 6px; }
@@ -395,9 +396,9 @@
       <p class="lede">El Latinobarómetro es uno de los estudios de opinión pública más amplios de América Latina: desde 1995 mide lo que piensan los ciudadanos de la región sobre la democracia, la economía y sus instituciones.</p>
       <p class="lede">Su edición más reciente, con más de <strong>19.000 entrevistas en 17 países</strong>, muestra que la región empieza a reconciliarse con la democracia, pero en Ecuador ese proceso va más lento: el apoyo se queda en <strong>43%</strong>, nueve puntos por debajo del promedio regional. Las razones pasan por la economía, el Estado y la inseguridad.</p>
       <div class="ticker">
-        <div class="t-item"><span class="t-icon" aria-hidden="true"><i class="ico" style="--ic:url(assets/iconos/inicio/1.svg)"></i></span><div class="t-val"><span class="count" data-target="19000" data-decimals="0">19.000</span><small>+</small></div><div class="t-lbl">entrevistas</div></div>
-        <div class="t-item"><span class="t-icon" aria-hidden="true"><i class="ico" style="--ic:url(assets/iconos/inicio/2.svg)"></i></span><div class="t-val"><span class="count" data-target="17" data-decimals="0">17</span></div><div class="t-lbl">países</div></div>
-        <div class="t-item"><span class="t-icon" aria-hidden="true"><i class="ico" style="--ic:url(assets/iconos/inicio/3.svg)"></i></span><div class="t-val"><span class="count" data-target="43" data-decimals="0">43</span><small>%</small></div><div class="t-lbl">apoyo en Ecuador, frente a 52% en la región</div></div>
+        <div class="t-item"><div class="t-val"><span class="count" data-target="19000" data-decimals="0">19.000</span><small>+</small></div><div class="t-lbl">entrevistas</div></div>
+        <div class="t-item"><div class="t-val"><span class="count" data-target="17" data-decimals="0">17</span></div><div class="t-lbl">países</div></div>
+        <div class="t-item"><div class="t-val"><span class="count" data-target="43" data-decimals="0">43</span><small>%</small></div><div class="t-lbl">apoyo en Ecuador, frente a 52% en la región</div></div>
       </div>
     </section>
 
@@ -431,7 +432,7 @@
       <div class="kick">02 · Apoyo al mercado, descontento con la economía</div>
       <div class="intro-grid"><div>
       <p class="lead-text">El malestar con la economía es casi total: el <strong class="stat">88%</strong> de los ecuatorianos no está satisfecho con cómo funciona y apenas el <strong class="stat">11%</strong> lo está. Ese desencanto se confirma cuando la pregunta baja a lo personal. Según Click Report (septiembre de 2026), para 6 de cada 10 ecuatorianos la principal preocupación son los problemas económicos en su conjunto: la falta de dinero, la inestabilidad laboral y otros.</p>
-      <p class="body-text">Aun así, el descontento no se traduce en un rechazo al modelo. En la medición de 2024, tres de cada cuatro ecuatorianos (<strong class="stat">75%</strong>) creían que la economía de mercado es el único camino al desarrollo, más que en Perú (72%) y Colombia (68%). Además, ese respaldo no sigue a la economía: entre 2018 y 2024 subió de 63% a 75%, aunque el empleo adecuado bajó y el PIB se contrajo en 2020 y 2024.</p>
+      <p class="body-text">Aun así, el descontento no se traduce en un rechazo al modelo. En la medición de 2024, tres de cada cuatro ecuatorianos (<strong class="stat">75%</strong>) creían que la economía de mercado es el único camino al desarrollo, más que en Perú (72%) y Colombia (68%). Además, ese respaldo no depende de la coyuntura: entre 2018 y 2024 subió de 63% a 75%, aunque el empleo adecuado bajó y el PIB se contrajo en 2020 y 2024.</p>
       </div><figure class="topic-photo" style="background-image:url('assets/foto-02.jpg')" role="img" aria-label="Foto del tema"><figcaption>Foto: <a href="https://diariocorreo.com.ec/120426/cantonal/el-oro-lidera-crecimiento-economico-con-aumento-del-13-en-ventas-segun-el-presidente-daniel-noboa" target="_blank" rel="noopener">Diario Correo</a></figcaption></figure></div>
 
       <div class="chart-frame" data-chart="mercado">
@@ -452,7 +453,7 @@
       <div class="num-bg">03</div>
       <div class="kick">03 · Función del Estado</div>
       <div class="intro-grid"><div>
-      <p class="lead-text">El funcionamiento del Estado es otro frente donde el sistema no cumple las expectativas. Hoy apenas <strong class="stat">uno de cada cinco</strong> ecuatorianos siente que el Estado ha hecho algo por él y su familia, menos de la mitad que en 2011, y Ecuador pasó de estar por encima del promedio regional a quedar por debajo. La misma insatisfacción aparece en hospitales, policía y educación, y alcanza también a los impuestos.</p>
+      <p class="lead-text">El funcionamiento del Estado es otro frente donde el sistema no cumple las expectativas. Hoy apenas <strong class="stat">uno de cada cinco</strong> ecuatorianos siente que el Estado ha hecho algo por él y su familia, menos de la mitad que en 2011, y Ecuador pasó de estar por encima del promedio regional a quedar por debajo. La misma insatisfacción aparece en los servicios y en cómo se usan los impuestos.</p>
       </div><figure class="topic-photo" style="background-image:url('assets/foto-03.jpg')" role="img" aria-label="Foto del tema"><figcaption>Foto: <a href="https://elpais.com/internacional/2022-06-26/la-protesta-social-pierde-musculo-en-ecuador-desplazada-por-la-propuesta-de-destitucion-contra-lasso.html" target="_blank" rel="noopener">El País</a></figcaption></figure></div>
 
       <div class="chart-frame" data-chart="servicios">
@@ -467,7 +468,7 @@
           <div>Hospitales públicos<small>% satisfecho</small></div>
           <div>Policía<small>% satisfecho</small></div>
           <div>Educación pública<small>% satisfecho</small></div>
-          <div>Gasto de impuestos<small>% que no confía</small></div>
+          <div>Buen uso de los impuestos<small>% que no confía</small></div>
         </div>
         <div class="cf-src">Fuente: Corporación Latinobarómetro.</div>
       </div>
@@ -531,7 +532,7 @@
       <p class="body-text" style="margin-top:34px">Cuando la pregunta es por la institución, ni la presidencia (<strong class="stat">23%</strong>) ni el Gobierno (<strong class="stat">22%</strong>) superan la cuarta parte de confianza. Pero cuando pasa a la persona, el resultado cambia: Daniel Noboa alcanza un <strong class="stat">43,9%</strong> de aprobación, según Click Research (septiembre de 2026). Es decir, los ecuatorianos confían más en la figura que en la institución que representa.</p>
 
       <div class="duel" data-chart="duel">
-        <div class="person"><div class="person-photo" style="background-image:url('assets/noboa.jpg')" role="img" aria-label="Foto de Daniel Noboa y Lavinia Valbonesi"><figcaption>Foto: Instagram Lavinia Valbonesi</figcaption></div><div class="pt"><div class="k">Daniel Noboa</div><div class="n">43,9%</div><p>de aprobación, según Click Research (septiembre de 2026).</p></div></div>
+        <div class="person"><div class="person-photo" style="background-image:url('assets/noboa.jpg')" role="img" aria-label="Foto de Daniel Noboa y Lavinia Valbonesi"><figcaption>Foto: Instagram Lavinia Valbonesi</figcaption></div></div>
         <div class="inst">
           <div class="vc">
             <div class="vgl" style="bottom:0"><span>0%</span></div><div class="vgl" style="bottom:50%"><span>25%</span></div><div class="vgl" style="bottom:100%"><span>50%</span></div>
@@ -745,7 +746,7 @@
     var tip = makeTip(host);
     $$(".bw", host).forEach(function (b) {
       b.addEventListener("pointerenter", function () {
-        var g = b.closest(".grp"), i = $$(".grp", host).indexOf(g), L = ["Hospitales públicos · % satisfecho", "Policía · % satisfecho", "Educación pública · % satisfecho", "Gasto de impuestos · % que no confía"][i], d = D[i];
+        var g = b.closest(".grp"), i = $$(".grp", host).indexOf(g), L = ["Hospitales públicos · % satisfecho", "Policía · % satisfecho", "Educación pública · % satisfecho", "Buen uso de los impuestos · % que no confía"][i], d = D[i];
         var diff = d[1] - d[0];
         showTip(tip, "<b>" + L + "</b><br>Promedio AL <b>" + d[0] + "%</b> · Ecuador <b>" + d[1] + "%</b><br>Ecuador " + (diff > 0 ? "+" : "−") + Math.abs(diff) + " pts vs. región", b.offsetLeft + g.offsetLeft + b.offsetWidth / 2, Math.max(host.clientHeight * (1 - Math.max(d[0], d[1]) / 100) - 34, 70));
       });
